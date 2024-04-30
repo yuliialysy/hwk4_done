@@ -23,10 +23,12 @@ def show_phone(args, contacts):
     else:
         return f'Contact {name} not found'
     
-def show_all(args, contacts):
-    name = args
+def show_all(contacts):
     if contacts:
-        return f'{name}: {contacts[name]}'
+        return '\n'.join(f'{name}: {phone}' for name, phone in contacts.items())
+    else:
+        return 'No contacts found.'
+
 
 
 def main():
@@ -48,7 +50,7 @@ def main():
         elif command == 'phone':
             print(show_phone(args, contacts))
         elif command == 'all':
-            print(show_all(args, contacts))
+            print(show_all(contacts))
         else:
             print("Invalid command.")
 
